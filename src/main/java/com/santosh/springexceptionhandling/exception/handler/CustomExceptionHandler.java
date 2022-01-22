@@ -32,7 +32,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
         log.error("Exception ", ex);
 
-        ErrorResponse error = new ErrorResponse("1", ex.getMessage(),
+        ErrorResponse error = new ErrorResponse("1", "Internal Server Error",
                 HttpStatus.INTERNAL_SERVER_ERROR.value(), new Date());
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -41,7 +41,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     public final ResponseEntity<Object> handleRuntimeException(Exception ex) {
         log.error("Exception ", ex);
 
-        ErrorResponse error = new ErrorResponse("1", ex.getMessage(),
+        ErrorResponse error = new ErrorResponse("1", "Internal Server Error",
                 HttpStatus.INTERNAL_SERVER_ERROR.value(), new Date());
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
